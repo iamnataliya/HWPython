@@ -30,8 +30,26 @@ nums = get_squerence(n)
 print(nums)
 print(round(sum(nums), 5))
 # 4 - Реализуйте выдачу случайного числа (или алгоритм перемешивания списка)
-import random
-psw = '' 
-for x in range(12):
-    psw = psw + random.choice(list('123456789qwertyuiopasdfgh'))
-print(psw)
+# Я первый раз так решила)
+# import random
+# psw = '' 
+# for x in range(12):
+#     psw = psw + random.choice(list('123456789qwertyuiopasdfgh'))
+# print(psw)
+
+import time
+
+def my_randome(min=0, max=10):
+    result=min-1
+    digit = len(str(max))
+    while result < min or result > max:
+        string_time = str(time.time_ns()//100)
+        result = int(string_time[digit: len(string_time)])
+        return result
+min_value = 1
+max_value = 50
+for i in range(0,20):
+    start = time.time_ns()
+    print(my_randome(min_value,max_value), end = ' ')
+    finish = time.time_ns()
+print('\n', finish-start)
