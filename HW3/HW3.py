@@ -26,16 +26,23 @@ for i in numbers:
         max = i - int(i)  
 print(max-min)
 # 4 - Напишите программу, которая будет преобразовывать десятичное число в двоичное.
-# a = int(input('Input binary numbers ='))
-
-
 # Двоичное в десятичное 
 a = int(input('Input numbers ='))
-def decimalToBinary(n):
-    if(n > 1):
-        decimalToBinary(n//2)
-    print(n%2, end=' ') 
-if __name__ == '__main__':
-    decimalToBinary(a)
-    print("\n")
+b = ''
+while a > 0:
+    b = str(a % 2) + b
+    a = a // 2
+print('Binary: ', b)
+
+
 # 5 - Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
+# Фибоначи для положительных чисел
+def fib(n):
+ if n in [1, 2]:
+   return 1
+ else:
+   return fib(n-1) + fib(n-2)
+list = []
+for e in range(1, 10):
+ list.append(fib(e))
+print(list) # 1 1 2 3 5 8 13 21 34
