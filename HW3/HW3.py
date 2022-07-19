@@ -26,23 +26,66 @@ for i in numbers:
         max = i - int(i)  
 print(max-min)
 # 4 - Напишите программу, которая будет преобразовывать десятичное число в двоичное.
-# Двоичное в десятичное 
-a = int(input('Input numbers ='))
-b = ''
-while a > 0:
-    b = str(a % 2) + b
-    a = a // 2
-print('Binary: ', b)
+def num_biger_then_zero(text):
+
+    int_num = True
+    while int_num:
+        n = input(f"{text}")
+        if n.isdigit():
+            n = int(n)
+            if n <= 0:
+                print("Input number > 0")
+            else:
+                int_num = False
+        else :
+            print("Wrong number")
+    return n
+n = num_biger_then_zero("Input number: ") 
+ost = ''  
+while n > 0:  
+    ost = str(n % 2) + ost 
+    n = n // 2 
+
+print(f'Binary number: {ost}')
+# Простой вариант 
+  a = int(input('Input numbers ='))
+  b = ''
+    while a > 0:
+        b = str(a % 2) + b
+        a = a // 2
+    print('Binary number: ', b)
 
 
 # 5 - Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
 # Фибоначи для положительных чисел
 def fib(n):
- if n in [1, 2]:
-   return 1
- else:
-   return fib(n-1) + fib(n-2)
-list = []
-for e in range(1, 10):
- list.append(fib(e))
-print(list) # 1 1 2 3 5 8 13 21 34
+    if n in [1, 2]:
+      return 1
+    else:
+      return fib(n-1) + fib(n-2)
+    list = []
+    for e in range(1, 10):
+    list.append(fib(e))
+    print(list) # 1 1 2 3 5 8 13 21 34
+
+# Решение корректное 
+def fib(n):
+    if (n <= 1):
+        return n
+    else:
+        return (fib(n-1) + fib(n-2))
+n = int(input("input number to make the fibonacci sequence:"))
+positive_lst=[]
+for i in range(n):
+    positive_lst.append(fib(i))
+print(f'Positive: \n{positive_lst}')
+negative_lst =[]
+my_lst = positive_lst
+for i in range(1, len(my_lst)):
+    negative_lst.append(my_lst[i]*((-1)**(i+1)))
+
+negative_lst.reverse()
+
+print(f'Negative: \n{negative_lst + my_lst}')
+# F−n = (−1)^(n+1)*F(n).
+
